@@ -18,7 +18,7 @@ function CourseCard({
   purchasedByHowMuch,
   handleGetId
 }) {
-  const rating = ratings?.length ? (ratings.reduce((a, b) => a + b, 0) / ratings.length).toFixed(1) : "N/A";
+  const rating = ratings?.length ? (ratings.reduce((a, b) => a + b, 0) / ratings.length).toFixed(1) : "0.0";
 
   return (
     <div className="border border-dashed border-indigo-400 rounded-lg p-4 w-full max-w-[350px] flex flex-col items-start shadow-sm bg-white">

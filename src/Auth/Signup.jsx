@@ -1,3 +1,93 @@
+// import React, { useState } from "react";
+// import axios from "axios";
+// import { useNavigate } from "react-router-dom";
+// import { toast } from "sonner";
+// import { API_URL } from "../api/apiUrl";
+
+// const Signup = () => {
+//   const navigate = useNavigate();
+
+//   const [name, setName] = useState("");
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+//   const [loading, setLoading] = useState(false);
+
+//   const handleSignup = async (e) => {
+//     e.preventDefault();
+
+//     if (!name || !email || !password) {
+//       toast.error("All fields required");
+//       return;
+//     }
+
+//     setLoading(true);
+
+//     try {
+//       await axios.post(
+//         `${API_URL}/api/user/user-sign-up`,
+//         { name, email, password },
+//         {
+//           headers: { "Content-Type": "application/json" },
+//         }
+//       );
+
+//       toast.success("Signup successful. Please login.");
+//       navigate("/login");
+//     } catch (error) {
+//       toast.error(
+//         error?.response?.data?.message || "Signup failed"
+//       );
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   return (
+//     <div className="min-h-screen flex items-center justify-center">
+//       <form
+//         onSubmit={handleSignup}
+//         className="w-full max-w-md p-6 border rounded space-y-4"
+//       >
+//         <h2 className="text-xl font-bold text-center">Signup</h2>
+
+//         <input
+//           placeholder="Name"
+//           className="w-full border p-3 rounded"
+//           value={name}
+//           onChange={(e) => setName(e.target.value)}
+//         />
+
+//         <input
+//           type="email"
+//           placeholder="Email"
+//           className="w-full border p-3 rounded"
+//           value={email}
+//           onChange={(e) => setEmail(e.target.value)}
+//         />
+
+//         <input
+//           type="password"
+//           placeholder="Password"
+//           className="w-full border p-3 rounded"
+//           value={password}
+//           onChange={(e) => setPassword(e.target.value)}
+//         />
+
+//         <button
+//           disabled={loading}
+//           className="w-full bg-black text-white py-3 rounded"
+//         >
+//           {loading ? "Creating..." : "Signup"}
+//         </button>
+//       </form>
+//     </div>
+//   );
+// };
+
+// export default Signup;
+
+
+
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
