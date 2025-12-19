@@ -22,6 +22,9 @@ import CourseDetail from "./pages/CourseDetail";
 import Login from "./Auth/Login";
 import Signup from "./Auth/Signup";
 
+// Context
+import { AuthProvider } from "./Auth/AuthContext"; // Import AuthProvider
+
 // Toast
 import { Toaster } from "sonner";
 
@@ -51,10 +54,10 @@ const router = createBrowserRouter(
 /* ================= APP ================= */
 const App = () => {
   return (
-    <>
+    <AuthProvider> {/* Wrap entire app with AuthProvider */}
       <Toaster richColors position="top-center" />
       <RouterProvider router={router} />
-    </>
+    </AuthProvider>
   );
 };
 

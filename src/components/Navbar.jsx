@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Logo from "../assets/Logo.png"; // adjust path if needed
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { RiCloseFill, RiMenu3Line } from "react-icons/ri";
+import { useAuth } from "../Auth/AuthContext"; // Import useAuth
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -17,24 +18,14 @@ const navigation = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
+  
+  // Use AuthContext instead of localStorage directly
+  const { isAuthenticated, logout, loading } = useAuth();
 
   useEffect(() => {
     // small entrance animation trigger
     setMounted(true);
-
-    // initial token check
-    const token = localStorage.getItem("user-auth-token");
-    setIsLoggedIn(Boolean(token));
-
-    // listen for token changes in other tabs
-    const onStorage = (e) => {
-      if (e.key === "user-auth-token") {
-        setIsLoggedIn(Boolean(e.newValue));
-      }
-    };
-    window.addEventListener("storage", onStorage);
 
     // close on escape
     const onKey = (e) => {
@@ -43,7 +34,6 @@ const Navbar = () => {
     window.addEventListener("keydown", onKey);
 
     return () => {
-      window.removeEventListener("storage", onStorage);
       window.removeEventListener("keydown", onKey);
     };
   }, []);
@@ -54,11 +44,29 @@ const Navbar = () => {
   }, [location.pathname]);
 
   const handleLogout = () => {
-    localStorage.removeItem("user-auth-token");
-    setIsLoggedIn(false);
-    // optional: navigate to home or login if you want
-    // navigate('/');
+    logout();
+    setIsOpen(false);
   };
+
+  // If loading, show minimal navbar
+  if (loading) {
+    return (
+      <nav className="w-full z-50 bg-white backdrop-blur-sm border-b border-gray-100 sticky top-0 left-0 right-0">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-21">
+            <div className="flex items-center gap-3">
+              <Link to="/" className="flex items-center" aria-label="Home">
+                <div className="w-14 h-14 rounded-md flex items-center justify-center overflow-hidden shadow-sm">
+                  <img src={Logo} alt="Logo" className="w-full h-full object-contain" />
+                </div>
+              </Link>
+            </div>
+            <div className="h-10 w-24 bg-gray-200 animate-pulse rounded-md"></div>
+          </div>
+        </div>
+      </nav>
+    );
+  }
 
   return (
     <>
@@ -132,7 +140,7 @@ const Navbar = () => {
 
             {/* Actions (desktop) */}
             <div className="hidden md:flex items-center gap-4">
-              {isLoggedIn ? (
+              {isAuthenticated ? (
                 <button
                   onClick={handleLogout}
                   className="px-4 py-2 bg-red-600 text-white rounded-md text-sm font-semibold shadow hover:brightness-95 transition"
@@ -199,12 +207,9 @@ const Navbar = () => {
               ))}
 
               <div className="pt-2 border-t border-gray-100 mt-2">
-                {isLoggedIn ? (
+                {isAuthenticated ? (
                   <button
-                    onClick={() => {
-                      handleLogout();
-                      setIsOpen(false);
-                    }}
+                    onClick={handleLogout}
                     className="w-full px-4 py-2 mt-2 bg-red-600 text-white rounded-md font-semibold"
                   >
                     Logout
