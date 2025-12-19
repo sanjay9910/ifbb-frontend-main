@@ -22,6 +22,8 @@ const Course = () => {
                 }
             });
 
+            console.log("Mera Kitna Corse Hai",res.data)
+
             setAllCourses(res.data || []);
         } catch (error) {
             console.log('Failed to fetch courses', error);

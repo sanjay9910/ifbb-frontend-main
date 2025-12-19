@@ -21,12 +21,15 @@ function CourseCard({
   const rating = ratings?.length ? (ratings.reduce((a, b) => a + b, 0) / ratings.length).toFixed(1) : "0.0";
 
   return (
-    <div className="border border-dashed border-indigo-400 rounded-lg p-4 w-full max-w-[350px] flex flex-col items-start shadow-sm bg-white">
-      <img
-        src={courseThumbnail}
-        alt={title}
-        className="w-full h-48 object-cover rounded-md mb-3"
-      />
+    <div className="border border border-indigo-400 rounded-lg p-3 w-full max-w-[300px] flex flex-col items-start shadow-sm bg-white">
+      {/* Image container with fixed aspect ratio */}
+      <div className="w-full h-48 mb-3 rounded-md overflow-hidden">
+        <img
+          src={courseThumbnail}
+          alt={title}
+          className="w-full h-full object-cover"
+        />
+      </div>
 
       <div className="w-full flex justify-between text-sm font-medium mb-1">
         <span className="text-red-500">⭐ {rating}</span>
@@ -50,17 +53,6 @@ function CourseCard({
         <span>👥 {purchasedByHowMuch}+</span>
       </div>
 
-      {/* Module titles */}
-      {modules?.length > 0 && (
-        <div className="w-full text-sm text-gray-700 bg-gray-50 p-2 rounded mb-4">
-          <p className="font-semibold mb-1">Modules:</p>
-          <ul className="list-disc list-inside space-y-1">
-            {modules.map((mod, idx) => (
-              <li key={mod._id}>{mod.title}</li>
-            ))}
-          </ul>
-        </div>
-      )}
 
       <button
         className="bg-indigo-700 hover:bg-indigo-800 text-white py-2 px-4 rounded-md text-sm mx-auto w-full"

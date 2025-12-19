@@ -99,7 +99,7 @@ function News() {
       <div className="pt-20 pb-16 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-6xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 mb-4 leading-tight">
+            <h1 className="text-6xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 mb-4 leading-tight">
               News & Updates
             </h1>
             <p className="text-xl text-gray-600 font-light max-w-2xl mx-auto">
@@ -188,7 +188,7 @@ function News() {
                           <span className="text-sm font-semibold text-blue-600">{formatDate(filteredNews[0].createdAt)} • {getTimeAgo(filteredNews[0].createdAt)}</span>
                         </div>
 
-                        <h2 className="text-4xl font-black text-gray-900 mb-6 leading-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-indigo-600 transition duration-300">
+                        <h2 className="text-2xl font-black text-gray-900 mb-6 leading-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-indigo-600 transition duration-300">
                           {filteredNews[0].title}
                         </h2>
 
@@ -285,7 +285,7 @@ function News() {
           onClick={() => setExpandedNews(null)}
         >
           <div
-            className="relative bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-gray-200"
+            className="relative bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-gray-200"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -325,7 +325,7 @@ function News() {
                   </div>
 
                   {/* Modal Title */}
-                  <h2 className="text-5xl font-black text-gray-900 mb-8 leading-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+                  <h2 className="text-3xl font-black text-gray-900 mb-8 leading-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
                     {newsItem.title}
                   </h2>
 
