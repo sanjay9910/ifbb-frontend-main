@@ -33,20 +33,15 @@ const Login = () => {
         }
       );
 
-      // ✅ Save token using context
       login(res.data.token);
-      
-      // ✅ ALSO save user email for payments
       localStorage.setItem("user-email", email);
       
-      // ✅ Save user data if available in response
       if (res.data.user) {
         localStorage.setItem("user-data", JSON.stringify(res.data.user));
       }
 
       toast.success(res.data.message || "Login successful");
 
-      // ✅ REDIRECT
       navigate("/");
     } catch (error) {
       toast.error(

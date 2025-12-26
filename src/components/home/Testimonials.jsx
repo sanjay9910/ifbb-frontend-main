@@ -56,7 +56,7 @@ const TestimonialsMarqueeFullBleed = () => {
       style={{ paddingTop: "6rem", paddingBottom: "2.5rem" }} 
     >
       {/* Title kept within normal content width */}
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl pb-10 mx-auto px-4">
         <h2 className="text-center text-3xl md:text-4xl font-bold mb-8">Testimonials</h2>
       </div>
 
@@ -71,7 +71,7 @@ const TestimonialsMarqueeFullBleed = () => {
         .marquee-viewport-full {
           width: 100vw;
           position: relative;
-          height:900px;
+          height:100%;
           marginTop:500px;
         }
 
@@ -162,7 +162,6 @@ const TestimonialsMarqueeFullBleed = () => {
               role="group"
               aria-label={`Testimonial by ${t.name}`}
             >
-              {/* avatar is absolutely positioned inside the card */}
               <img
                 src={t.image}
                 alt={t.name}

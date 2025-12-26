@@ -39,21 +39,22 @@ const Course = () => {
             {/* Hero Section */}
             <div
                 style={{
-                    backgroundImage: "url('/course.png')",
-                    height: '30vh',
+                    backgroundImage: "linear-gradient(rgba(26, 3, 55, 0.5), rgba(16, 2, 37, 0.97)), url('/bodybuilder.png')",
+                    height: '50vh',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
+                    backgroundAttachment: 'fixed'
                 }}
             >
                 <div className="flex items-center flex-col justify-center h-full text-white text-center px-4">
                     <h1 className="sm:text-xl">
-                        Most people fail at building muscle because they don’t have a plan. They’re winging workouts, eating wrong, and burning out fast.
+                        Most people fail at building muscle because they don't have a plan. They're winging workouts, eating wrong, and burning out fast.
                     </h1>
                     <h1 className="sm:text-3xl text-2xl font-bold sm:my-4 my-2">
                         This course fixes all that
                     </h1>
                     <h1 className="sm:text-xl">
-                        You’ll get a complete, science-backed system that takes you from beginner to beast, with zero confusion.
+                        You'll get a complete, science-backed system that takes you from beginner to beast, with zero confusion.
                     </h1>
                 </div>
             </div>
